@@ -13,19 +13,26 @@ a:hover {
   text-decoration: underline;
 }
 
-#work-categories .nav-link {
+
+/* General link styles */
+.navbar .nav-link {
   color: black !important;
   background-color: transparent !important;
-  border: none;
+  border: none !important;
   border-bottom: 2px solid transparent;
   border-radius: 0;
   padding: 0.25rem 0.5rem;
   font-weight: 500;
+  text-decoration: none;
 }
 
-#work-categories .nav-link.active {
+/* Active link styles */
+.navbar .nav-link.active {
   border-bottom: 2px solid black;
+  background-color: transparent !important;
+  color: black !important;
 }
+
 
 .masonry {
   column-count: 3;
