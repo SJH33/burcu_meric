@@ -27,3 +27,15 @@ a:hover {
   border-bottom: 2px solid black;
 }
 
+.masonry {
+  column-count: 4;
+  column-gap: 1rem;
+}
+
+.masonry img {
+  width: 100%;
+  display: block;
+  margin-bottom: 1rem;
+  break-inside: avoid;
+}
+
