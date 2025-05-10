@@ -2,21 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Burcu Meriç – Work</title>
-  <link href="./output.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+  <!-- Bootstrap CDN -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
 </head>
-<body class="bg-white text-gray-900 font-sans p-8">
-  <header class="text-center mb-12">
-    <h1 class="text-4xl font-bold">Burcu Meriç</h1>
-    <p class="text-lg text-gray-600">Minimalist Portfolio</p>
+<body class="bg-light text-dark">
+
+  <header class="text-center py-5">
+    <h1 class="display-4 fw-bold">Burcu Meriç</h1>
+    <p class="lead text-muted">Minimalist Portfolio</p>
   </header>
 
-  <section class="grid grid-cols-2 gap-6 max-w-4xl mx-auto">
-    <div class="border"><img src="art1.jpg" alt="Artwork 1" /></div>
-    <div class="border"><img src="art2.jpg" alt="Artwork 2" /></div>
-    <div class="border"><img src="art3.jpg" alt="Artwork 3" /></div>
-    <div class="border"><img src="art4.jpg" alt="Artwork 4" /></div>
-  </section>
+  <main class="container">
+    <section class="row g-4">
+      <div class="col-6 col-md-3">
+        <img src="art1.jpg" class="img-fluid border" alt="Artwork 1" />
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="art2.jpg" class="img-fluid border" alt="Artwork 2" />
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="art3.jpg" class="img-fluid border" alt="Artwork 3" />
+      </div>
+      <div class="col-6 col-md-3">
+        <img src="art4.jpg" class="img-fluid border" alt="Artwork 4" />
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center py-4 mt-5 text-muted">
+    &copy; 2025 Burcu Meriç
+  </footer>
+
 </body>
 </html>
