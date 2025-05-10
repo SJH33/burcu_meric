@@ -111,19 +111,25 @@
       document.getElementById("navbar-container").innerHTML = data;
     });
 
+
+
+  
   document.querySelectorAll('#work-categories .nav-link').forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
-      
-      // Update active class
+
+      // Remove 'active' class from all links
       document.querySelectorAll('#work-categories .nav-link').forEach(l => l.classList.remove('active'));
+
+      // Add 'active' class to the clicked link
       this.classList.add('active');
 
-      // Update title
+      // Update the page title
       const category = this.getAttribute('data-category');
       document.getElementById('work-title').textContent = category;
     });
   });
+
 
 
   </script>
