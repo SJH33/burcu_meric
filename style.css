@@ -13,13 +13,17 @@ a:hover {
   text-decoration: underline;
 }
 
-<style>
-  #work-categories .nav-link {
-    text-decoration: none;
-    border-bottom: 2px solid transparent;
-  }
+#work-categories .nav-link {
+  color: black !important;
+  background-color: transparent !important;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  padding: 0.25rem 0.5rem;
+  font-weight: 500;
+}
 
-  #work-categories .nav-link.active {
-    border-bottom: 2px solid black;
-  }
-</style>
+#work-categories .nav-link.active {
+  border-bottom: 2px solid black;
+}
+
