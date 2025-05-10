@@ -14,8 +14,9 @@ a:hover {
 }
 
 
-/* General link styles */
-.navbar .nav-link {
+
+/* Style all category links */
+#work-categories .nav-link {
   color: black !important;
   background-color: transparent !important;
   border: none !important;
@@ -26,8 +27,8 @@ a:hover {
   text-decoration: none;
 }
 
-/* Active link styles */
-.navbar .nav-link.active {
+/* Style the active (selected) category link */
+#work-categories .nav-link.active {
   border-bottom: 2px solid black;
   background-color: transparent !important;
   color: black !important;
