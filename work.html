@@ -115,37 +115,43 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-  fetch("navbar.html")
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("navbar-container").innerHTML = data;
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Load navbar
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar-container").innerHTML = data;
+      });
+
+    // Category link behavior
+    const links = document.querySelectorAll('#work-categories .nav-link');
+    const title = document.getElementById('work-title');
+
+    links.forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        links.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        title.textContent = this.getAttribute('data-category');
+      });
     });
 
-
-
-  
-  document.querySelectorAll('#work-categories .nav-link').forEach(link => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-
-      // Remove 'active' class from all links
-      document.querySelectorAll('#work-categories .nav-link').forEach(l => l.classList.remove('active'));
-
-      // Add 'active' class to the clicked link
-      this.classList.add('active');
-
-      // Update the page title
-      const category = this.getAttribute('data-category');
-      document.getElementById('work-title').textContent = category;
+    // Initialize Masonry after images load
+    imagesLoaded('.row', function () {
+      new Masonry('.row', {
+        itemSelector: '.col-sm-6',
+        percentPosition: true
+      });
     });
   });
+</script>
 
+<!-- External libraries -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 
-
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
 
 </body>
 </html>
