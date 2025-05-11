@@ -80,3 +80,16 @@ a:hover {
 }
 
 
+.hero-section {
+  height: 90vh; /* Takes up most of the viewport height */
+  background-color: #fff; /* Keep it clean */
+  padding: 2rem 0;
+}
+
+.hero-img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+
