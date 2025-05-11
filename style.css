@@ -35,6 +35,10 @@ a:hover {
   font-size: 0.875rem; /* Adjust the size to match the 'small' class in your HTML */
 }
 
+.black-gradient-strip {
+  background: linear-gradient(to bottom, #000000, rgba(0, 0, 0, 0));
+  width: 100%;
+}
 
 
 
