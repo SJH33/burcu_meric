@@ -92,44 +92,32 @@
         document.getElementById("footer-container").innerHTML = data;
       });
 
-    // Setup after DOM content is loaded
-    document.addEventListener("DOMContentLoaded", function () {
-      // Category switcher
-      const links = document.querySelectorAll('#work-categories .nav-link');
-      const title = document.getElementById('work-title');
-
-      links.forEach(link => {
-        link.addEventListener('click', function (e) {
-          e.preventDefault();
-          links.forEach(l => l.classList.remove('active'));
-          this.classList.add('active');
-          title.textContent = this.getAttribute('data-category');
-        });
-      });
-
-      // Masonry layout
-      const grid = document.querySelector('.row');
-      if (grid) {
-        imagesLoaded(grid, function () {
-          new Masonry(grid, {
-            itemSelector: '.col-sm-6',
-            percentPosition: true
-          });
-        });
-      }
-    });
-
-    document.addEventListener("DOMContentLoaded", function () {
+   document.addEventListener("DOMContentLoaded", function () {
   const links = document.querySelectorAll('#work-categories .nav-link');
+  const title = document.getElementById('work-title');
 
   links.forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
       links.forEach(l => l.classList.remove('active'));
       this.classList.add('active');
+      if (title) {
+        title.textContent = this.getAttribute('data-category');
+      }
     });
   });
+
+  const grid = document.querySelector('.row');
+  if (grid) {
+    imagesLoaded(grid, function () {
+      new Masonry(grid, {
+        itemSelector: '.col-sm-6',
+        percentPosition: true
+      });
+    });
+  }
 });
+
 
   </script>
   
