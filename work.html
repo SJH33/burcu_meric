@@ -55,7 +55,7 @@
       <!-- Cards -->
     
         <div class="col-sm-6 col-lg-4 mb-4" data-category="Acrylic,Sketch">
-        <div class="card"><img src="https://picsum.photos/seed/1/400/500" alt="Art 1" class="card-img-top"></div>
+          <div class="card"><img src="https://picsum.photos/seed/1/400/500" alt="Art 1" class="card-img-top"></div>
         </div>
         <div class="col-sm-6 col-lg-4 mb-4" data-category="Digital">
           <div class="card"><img src="https://picsum.photos/seed/2/300/400" alt="Art 2" class="card-img-top"></div>
@@ -159,7 +159,19 @@
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 <script src="js/work.js"></script>
-<script>
+  <script>
+  // Initialize Masonry once page loads
+  const grid = document.querySelector('[data-masonry]');
+  const msnry = new Masonry(grid, {
+    itemSelector: '.col-sm-6',
+    percentPosition: true
+  });
+
+  imagesLoaded(grid, function () {
+    msnry.layout();
+  });
+
+  // Category filter
   document.querySelectorAll('#work-categories .nav-link').forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
@@ -178,42 +190,9 @@
           card.style.display = 'none';
         }
       });
-    });
-  });
-</script>
 
-  <script>
-  const msnry = new Masonry('#art-gallery', {
-    itemSelector: '.col-sm-6',
-    percentPosition: true
-  });
-
-  imagesLoaded('#art-gallery', () => {
-    msnry.layout();
-  });
-
-  document.querySelectorAll('#work-categories .nav-link').forEach(link => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-
-      // Update active class
-      document.querySelectorAll('#work-categories .nav-link').forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-
-      const selectedCategory = this.dataset.category;
-
-      document.querySelectorAll('#art-gallery > .col-sm-6').forEach(card => {
-        const categories = card.dataset.category.split(',');
-
-        if (selectedCategory === 'WORK' || categories.includes(selectedCategory)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-
-      // Recalculate masonry layout after filter change
-      imagesLoaded('#art-gallery', () => {
+      // Rerun Masonry layout
+      imagesLoaded(grid, function () {
         msnry.layout();
       });
     });
