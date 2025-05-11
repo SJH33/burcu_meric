@@ -179,9 +179,7 @@
       this.classList.add('active');
 
       const selectedCategory = this.dataset.category;
-
-      // 💡 Only select cards inside the grid
-      const cards = grid.querySelectorAll('[data-category]');
+      const cards = grid.querySelectorAll('.col-sm-6');
 
       cards.forEach(card => {
         const categories = card.dataset.category.split(',');
@@ -192,12 +190,17 @@
         }
       });
 
-      imagesLoaded(grid, function () {
-        msnry.layout();
-      });
+      // Wait for the DOM to update, then reload + layout Masonry
+      setTimeout(() => {
+        msnry.reloadItems();
+        imagesLoaded(grid, () => {
+          msnry.layout();
+        });
+      }, 100); // small delay ensures display changes are rendered first
     });
   });
 </script>
+
 
 
   
