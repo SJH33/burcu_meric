@@ -100,4 +100,8 @@ a:hover {
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
+.footer_socials_wrapper + .text-center {
+  border-top: none !important;
+}
+
 
