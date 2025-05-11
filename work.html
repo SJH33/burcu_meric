@@ -154,54 +154,13 @@
   <!-- Footer placeholder -->
   <div id="footer-container"></div>
 
-  <!-- Scripts -->
+ <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 <script src="js/work.js"></script>
-<script>
-  const grid = document.querySelector('[data-masonry]');
-  const msnry = new Masonry(grid, {
-    itemSelector: '.col-sm-6',
-    percentPosition: true
-  });
-
-  imagesLoaded(grid, function () {
-    msnry.layout();
-  });
-
-  document.querySelectorAll('#work-categories .nav-link').forEach(link => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-
-      // Update active class
-      document.querySelectorAll('#work-categories .nav-link').forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-
-      const selectedCategory = this.dataset.category;
-      const cards = grid.querySelectorAll('.col-sm-6');
-
-      cards.forEach(card => {
-        const categories = card.dataset.category.split(',');
-        if (selectedCategory === 'WORK' || categories.includes(selectedCategory)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-
-      // Wait for the DOM to update, then reload + layout Masonry
-      setTimeout(() => {
-        msnry.reloadItems();
-        imagesLoaded(grid, () => {
-          msnry.layout();
-        });
-      }, 100); // small delay ensures display changes are rendered first
-    });
-  });
-</script>
-
-
+</body>
+</html>
 
   
 </body>
