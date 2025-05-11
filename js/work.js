@@ -70,3 +70,11 @@ links.forEach(link => {
     });
   });
 });
+
+// js/work.js
+imagesLoaded('.row', function () {
+  new Masonry('.row', {
+    itemSelector: '.col-sm-6',
+    percentPosition: true
+  });
+});
