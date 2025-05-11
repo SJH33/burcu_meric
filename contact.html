@@ -37,22 +37,27 @@
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="text-center py-4 border-top">
-    <p class="mb-0">© 2025 Burcu Meric</p>
-  </footer>
+ <!-- Footer Placeholder -->
+  <div id="footer-container"></div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    fetch("navbar.html").then(res => res.text()).then(data => {
+      document.getElementById("navbar-container").innerHTML = data;
+    });
+  
+    fetch("footer.html").then(res => res.text()).then(data => {
+      document.getElementById("footer-container").innerHTML = data;
+    });
+  </script>
+
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Load Navbar -->
-  <script>
-    fetch("navbar.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("navbar-container").innerHTML = data;
-      });
-  </script>
+  
 
 </body>
 </html>
