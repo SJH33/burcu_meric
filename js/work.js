@@ -11,70 +11,53 @@ fetch("footer.html")
     document.getElementById("footer-container").innerHTML = data;
   });
 
-// Run after DOM is ready
+// Main logic
 document.addEventListener("DOMContentLoaded", function () {
-  // Category switching logic
-  const links = document.querySelectorAll('#work-categories .nav-link');
+  const grid = document.querySelector('[data-masonry]');
   const title = document.getElementById('work-title');
+  const links = document.querySelectorAll('#work-categories .nav-link');
+  const cards = grid ? grid.querySelectorAll('.col-sm-6') : [];
 
+  // Initialize Masonry
+  const msnry = new Masonry(grid, {
+    itemSelector: '.col-sm-6',
+    percentPosition: true
+  });
+
+  // Ensure layout once images are loaded
+  imagesLoaded(grid, function () {
+    msnry.layout();
+  });
+
+  // Handle category filtering
   links.forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
+
+      // Update active state on nav
       links.forEach(l => l.classList.remove('active'));
       this.classList.add('active');
+
+      // Update title
+      const selectedCategory = this.dataset.category;
       if (title) {
-        title.textContent = this.getAttribute('data-category');
+        title.textContent = selectedCategory;
       }
-    });
-  });
 
-  // Masonry layout
-  const grid = document.querySelector('.row');
-  if (grid) {
-    imagesLoaded(grid, function () {
-      new Masonry(grid, {
-        itemSelector: '.col-sm-6',
-        percentPosition: true
+      // Show/hide cards
+      cards.forEach(card => {
+        const categories = card.dataset.category.split(',');
+        const match = selectedCategory === 'WORK' || categories.includes(selectedCategory);
+        card.style.display = match ? 'block' : 'none';
       });
+
+      // Delay to ensure display updates before layout
+      setTimeout(() => {
+        msnry.reloadItems();
+        imagesLoaded(grid, () => {
+          msnry.layout();
+        });
+      }, 100);
     });
-  }
-});
-
-
-const imageCards = document.querySelectorAll('.row [data-category]');
-
-links.forEach(link => {
-  link.addEventListener('click', function (e) {
-    e.preventDefault();
-
-    // Update nav link active class
-    links.forEach(l => l.classList.remove('active'));
-    this.classList.add('active');
-
-    const selectedCategory = this.getAttribute('data-category');
-
-    // Update page title (optional)
-    if (title) {
-      title.textContent = selectedCategory;
-    }
-
-    // Filter image cards
-    imageCards.forEach(card => {
-      const cardCategory = card.getAttribute('data-category');
-
-      if (selectedCategory === 'WORK' || selectedCategory === cardCategory) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  });
-});
-
-// js/work.js
-imagesLoaded('.row', function () {
-  new Masonry('.row', {
-    itemSelector: '.col-sm-6',
-    percentPosition: true
   });
 });
