@@ -73,53 +73,11 @@
   <div id="footer-container"></div>
 
   <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script src="js/work.js"></script>
 
-  <!-- Load navbar and footer + activate scripts -->
-  <script>
-    // Load external navbar and footer
-    fetch("navbar.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("navbar-container").innerHTML = data;
-      });
-
-    fetch("footer.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("footer-container").innerHTML = data;
-      });
-
-   document.addEventListener("DOMContentLoaded", function () {
-  const links = document.querySelectorAll('#work-categories .nav-link');
-  const title = document.getElementById('work-title');
-
-  links.forEach(link => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      links.forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-      if (title) {
-        title.textContent = this.getAttribute('data-category');
-      }
-    });
-  });
-
-  const grid = document.querySelector('.row');
-  if (grid) {
-    imagesLoaded(grid, function () {
-      new Masonry(grid, {
-        itemSelector: '.col-sm-6',
-        percentPosition: true
-      });
-    });
-  }
-});
-
-
-  </script>
   
 </body>
 </html>
