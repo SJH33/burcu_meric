@@ -1,24 +1,21 @@
-
-<!-- Black Bar on Top -->
-<div class="bg-dark text-white text-center py-2 small">
-  Burcu Meric is open to illustration work. 
+<!-- Black Gradient Strip on Top -->
+<div class="black-gradient-strip text-white text-center py-2 small">
+  Burcu Meric is open to illustration work.
   <a href="contact.html" class="text-white text-decoration-underline">Contact here.</a>
 </div>
 
-
 <!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
-  <div class="container d-flex align-items-center">
-    <a class="navbar-brand d-flex align-items-center me-3" href="index.html">
-      <img src="images/burcu_meric_logo.png" alt="Logo" height="50">
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top border-bottom">
+  <div class="container d-flex justify-content-between align-items-center">
+    
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="images/burcu_meric_logo.png" alt="Logo" height="50" />
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
+    <!-- Main Navigation Links -->
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav d-flex flex-row flex-wrap align-items-center gap-3">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row flex-wrap align-items-center gap-3">
         <li class="nav-item">
           <a class="nav-link" href="work.html">Work</a>
         </li>
@@ -30,5 +27,42 @@
         </li>
       </ul>
     </div>
+
+    <!-- Site Tools (Wishlist, Cart, Account, Search, Menu) -->
+    <div class="site-tools d-flex align-items-center gap-3">
+      <!-- Wishlist -->
+      <a href="/wishlist" class="tools_button text-dark">
+        <i class="bi bi-heart"></i>
+      </a>
+
+      <!-- Shopping Cart -->
+      <a href="/cart" class="tools_button text-dark position-relative">
+        <i class="bi bi-cart"></i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
+          0
+        </span>
+      </a>
+
+      <!-- User Account -->
+      <a href="/account" class="tools_button text-dark">
+        <i class="bi bi-person"></i>
+      </a>
+
+      <!-- Search -->
+      <a href="#" class="tools_button text-dark">
+        <i class="bi bi-search"></i>
+      </a>
+
+      <!-- Mobile Menu -->
+      <a href="#" class="tools_button text-dark d-lg-none">
+        <i class="bi bi-list"></i>
+      </a>
+    </div>
+
+    <!-- Toggler for mobile nav -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
   </div>
 </nav>
