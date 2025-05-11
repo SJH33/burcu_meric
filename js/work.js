@@ -39,3 +39,34 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+
+const imageCards = document.querySelectorAll('.row [data-category]');
+
+links.forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    // Update nav link active class
+    links.forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+
+    const selectedCategory = this.getAttribute('data-category');
+
+    // Update page title (optional)
+    if (title) {
+      title.textContent = selectedCategory;
+    }
+
+    // Filter image cards
+    imageCards.forEach(card => {
+      const cardCategory = card.getAttribute('data-category');
+
+      if (selectedCategory === 'WORK' || selectedCategory === cardCategory) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
