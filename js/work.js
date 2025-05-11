@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const links = document.querySelectorAll('#work-categories .nav-link');
   const cards = grid ? grid.querySelectorAll('.col-sm-6') : [];
 
+  if (!grid || cards.length === 0) return;
+
   // Initialize Masonry
   const msnry = new Masonry(grid, {
     itemSelector: '.col-sm-6',
@@ -38,8 +40,9 @@ document.addEventListener("DOMContentLoaded", function () {
       links.forEach(l => l.classList.remove('active'));
       this.classList.add('active');
 
-      // Update title
       const selectedCategory = this.dataset.category;
+
+      // Update title if available
       if (title) {
         title.textContent = selectedCategory;
       }
@@ -51,13 +54,13 @@ document.addEventListener("DOMContentLoaded", function () {
         card.style.display = match ? 'block' : 'none';
       });
 
-      // Delay to ensure display updates before layout
-      setTimeout(() => {
+      // Trigger layout update after DOM paints
+      requestAnimationFrame(() => {
         msnry.reloadItems();
         imagesLoaded(grid, () => {
           msnry.layout();
         });
-      }, 100);
+      });
     });
   });
 });
