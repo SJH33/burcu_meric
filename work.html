@@ -153,6 +153,28 @@
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 <script src="js/work.js"></script>
+<script>
+  document.querySelectorAll('#work-categories .nav-link').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      // Update active class
+      document.querySelectorAll('#work-categories .nav-link').forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+
+      const selectedCategory = this.dataset.category;
+
+      document.querySelectorAll('[data-category]').forEach(card => {
+        const categories = card.dataset.category.split(',');
+        if (selectedCategory === 'WORK' || categories.includes(selectedCategory)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
 
   
 </body>
