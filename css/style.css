@@ -105,3 +105,9 @@ a:hover {
   border-top: none !important;
 }
 
+.hidden {
+  display: none !important;
+  visibility: hidden;
+  position: absolute;
+}
+
