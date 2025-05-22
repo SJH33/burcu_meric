@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!grid || cards.length === 0) return;
 
   // Initialize Masonry
-  const msnry = new Masonry(grid, {
+  let msnry = new Masonry(grid, {
     itemSelector: '.col-sm-6',
     percentPosition: true
   });
@@ -51,12 +51,22 @@ document.addEventListener("DOMContentLoaded", function () {
       cards.forEach(card => {
         const categories = card.dataset.category.split(',');
         const match = selectedCategory === 'WORK' || categories.includes(selectedCategory);
-        card.style.display = match ? 'block' : 'none';
+        
+        if (match) {
+          card.classList.remove("hidden");
+        } else {
+          card.classList.add("hidden");
+        }
       });
 
-      // Trigger Masonry reflow to remove gaps
-      requestAnimationFrame(() => {
-        msnry.reloadItems();
+      // Destroy Masonry & reinitialize for proper layout
+      msnry.destroy();
+      msnry = new Masonry(grid, {
+        itemSelector: '.col-sm-6',
+        percentPosition: true
+      });
+
+      imagesLoaded(grid, () => {
         msnry.layout();
       });
     });
