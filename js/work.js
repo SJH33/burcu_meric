@@ -62,5 +62,34 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       });
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+  const artGallery = document.querySelector("#art-gallery");
+  const masonryInstance = new Masonry(artGallery, {
+    itemSelector: ".col-sm-6",
+    percentPosition: true,
+  });
+
+  const categoryLinks = document.querySelectorAll("#work-categories .nav-link");
+  categoryLinks.forEach((link) => {
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      const category = this.getAttribute("data-category");
+
+      document.querySelectorAll("#art-gallery .col-sm-6").forEach((item) => {
+        if (category === "WORK" || item.getAttribute("data-category").includes(category)) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+      });
+
+      // Trigger Masonry layout again
+      masonryInstance.layout();
+    });
+  });
+});
+
   });
 });
