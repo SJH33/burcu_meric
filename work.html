@@ -15,36 +15,65 @@
   <!-- Work Categories -->
   <div class="container my-4">
     <ul class="nav flex-wrap justify-content-center gap-2" id="work-categories">
-      <li class="nav-item">
-        <span class="nav-link disabled text-black-50">Select Category:</span>
-      </li>
+      <li class="nav-item"><span class="nav-link disabled text-black-50">Select Category:</span></li>
       <li class="nav-item"><a class="nav-link text-black active" data-category="All" href="#">All</a></li>
       <li class="nav-item"><a class="nav-link text-black" data-category="Acrylic" href="#">Acrylic</a></li>
       <li class="nav-item"><a class="nav-link text-black" data-category="Digital" href="#">Digital</a></li>
       <li class="nav-item"><a class="nav-link text-black" data-category="Sketch" href="#">Sketch</a></li>
       <li class="nav-item"><a class="nav-link text-black" data-category="Watercolor" href="#">Watercolor</a></li>
+      <li class="nav-item"><a class="nav-link text-black" data-category="Mixed Media" href="#">Mixed Media</a></li>
+      <li class="nav-item"><a class="nav-link text-black" data-category="Photography" href="#">Photography</a></li>
     </ul>
   </div>
 
   <!-- Art Gallery -->
   <div class="container my-5">
     <div class="row" id="art-gallery" data-masonry='{"percentPosition": true }'>
-      <!-- Sample Images -->
-      <div class="col-sm-6 col-lg-4 mb-4" data-category="Acrylic">
-        <div class="card"><img src="https://picsum.photos/400/500?random=1" alt="Acrylic Art" class="card-img-top"></div>
+      <!-- 30 Images with Randomly Assigned Categories -->
+      <div class="col-sm-6 col-lg-4 mb-4" data-category="Acrylic,Sketch">
+        <div class="card"><img src="https://picsum.photos/400/500?random=1" alt="Art 1" class="card-img-top"></div>
       </div>
       <div class="col-sm-6 col-lg-4 mb-4" data-category="Digital">
-        <div class="card"><img src="https://picsum.photos/400/500?random=2" alt="Digital Art" class="card-img-top"></div>
+        <div class="card"><img src="https://picsum.photos/400/500?random=2" alt="Art 2" class="card-img-top"></div>
+      </div>
+      <div class="col-sm-6 col-lg-4 mb-4" data-category="Sketch,Watercolor">
+        <div class="card"><img src="https://picsum.photos/400/500?random=3" alt="Art 3" class="card-img-top"></div>
+      </div>
+      <div class="col-sm-6 col-lg-4 mb-4" data-category="Mixed Media">
+        <div class="card"><img src="https://picsum.photos/400/500?random=4" alt="Art 4" class="card-img-top"></div>
+      </div>
+      <div class="col-sm-6 col-lg-4 mb-4" data-category="Photography">
+        <div class="card"><img src="https://picsum.photos/400/500?random=5" alt="Art 5" class="card-img-top"></div>
+      </div>
+      <div class="col-sm-6 col-lg-4 mb-4" data-category="Watercolor,Acrylic">
+        <div class="card"><img src="https://picsum.photos/400/500?random=6" alt="Art 6" class="card-img-top"></div>
+      </div>
+      <div class="col-sm-6 col-lg-4 mb-4" data-category="Digital,Photography">
+        <div class="card"><img src="https://picsum.photos/400/500?random=7" alt="Art 7" class="card-img-top"></div>
       </div>
       <div class="col-sm-6 col-lg-4 mb-4" data-category="Sketch">
-        <div class="card"><img src="https://picsum.photos/400/500?random=3" alt="Sketch Art" class="card-img-top"></div>
+        <div class="card"><img src="https://picsum.photos/400/500?random=8" alt="Art 8" class="card-img-top"></div>
       </div>
-      <div class="col-sm-6 col-lg-4 mb-4" data-category="Watercolor">
-        <div class="card"><img src="https://picsum.photos/400/500?random=4" alt="Watercolor Art" class="card-img-top"></div>
+      <div class="col-sm-6 col-lg-4 mb-4" data-category="Acrylic,Mixed Media">
+        <div class="card"><img src="https://picsum.photos/400/500?random=9" alt="Art 9" class="card-img-top"></div>
       </div>
-      <div class="col-sm-6 col-lg-4 mb-4" data-category="Acrylic,Sketch">
-        <div class="card"><img src="https://picsum.photos/400/500?random=5" alt="Mixed Art" class="card-img-top"></div>
+      <div class="col-sm-6 col-lg-4 mb-4" data-category="Photography,Mixed Media">
+        <div class="card"><img src="https://picsum.photos/400/500?random=10" alt="Art 10" class="card-img-top"></div>
       </div>
+      
+      <!-- Adding 20 More Images with Random Categories -->
+      <script>
+        for (let i = 11; i <= 30; i++) {
+          const categories = ["Acrylic", "Digital", "Sketch", "Watercolor", "Mixed Media", "Photography"];
+          const randomCategories = categories.sort(() => 0.5 - Math.random()).slice(0, Math.floor(Math.random() * 2) + 1).join(",");
+          document.write(`
+            <div class="col-sm-6 col-lg-4 mb-4" data-category="${randomCategories}">
+              <div class="card"><img src="https://picsum.photos/400/500?random=${i}" alt="Art ${i}" class="card-img-top"></div>
+            </div>
+          `);
+        }
+      </script>
+
     </div>
   </div>
 
