@@ -48,40 +48,45 @@ document.addEventListener("DOMContentLoaded", function () {
       itemSelector: ".col-sm-6",
       percentPosition: true
     });
-
-    // Ensure Masonry refreshes layout properly
+  
+    // Ensure Masonry only initializes after images are fully loaded
     imagesLoaded(gallery, function () {
-      msnry.layout();
+      msnry.layout(); // Properly arrange the tiles
     });
   }
 
-  function setupFiltering() {
+
+  
+ 
+
+    function setupFiltering() {
     links.forEach(link => {
       link.addEventListener("click", function (e) {
         e.preventDefault();
-
+  
         // Update active state on nav
         links.forEach(l => l.classList.remove("active"));
         this.classList.add("active");
-
+  
         const selectedCategory = this.dataset.category;
         const cards = gallery.querySelectorAll(".col-sm-6");
-
+  
         cards.forEach(card => {
           const categories = card.dataset.category.split(",");
           const match = selectedCategory === "All" || categories.includes(selectedCategory);
           
-          // Use CSS visibility instead of display block/none for smoother transitions
+          // Toggle visibility instead of display:none to avoid Masonry breaking
           card.style.opacity = match ? "1" : "0";
           card.style.transform = match ? "scale(1)" : "scale(0)";
           card.style.transition = "opacity 0.3s ease, transform 0.3s ease";
         });
-
-        // Refresh Masonry layout
+  
+        // Refresh Masonry layout AFTER filtering
         imagesLoaded(gallery, function () {
           initializeMasonry();
         });
       });
     });
   }
+
 });
