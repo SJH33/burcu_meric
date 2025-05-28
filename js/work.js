@@ -37,7 +37,10 @@ document.addEventListener("DOMContentLoaded", function () {
         gallery.appendChild(artElement);
       });
 
-      initializeMasonry();
+      imagesLoaded(gallery, function () {
+        initializeMasonry();
+        setupFiltering();
+      });
     });
 
   function initializeMasonry() {
@@ -46,11 +49,10 @@ document.addEventListener("DOMContentLoaded", function () {
       percentPosition: true
     });
 
+    // Ensure Masonry refreshes layout properly
     imagesLoaded(gallery, function () {
       msnry.layout();
     });
-
-    setupFiltering();
   }
 
   function setupFiltering() {
@@ -68,13 +70,16 @@ document.addEventListener("DOMContentLoaded", function () {
         cards.forEach(card => {
           const categories = card.dataset.category.split(",");
           const match = selectedCategory === "All" || categories.includes(selectedCategory);
-
-          card.style.display = match ? "block" : "none";
+          
+          // Use CSS visibility instead of display block/none for smoother transitions
+          card.style.opacity = match ? "1" : "0";
+          card.style.transform = match ? "scale(1)" : "scale(0)";
+          card.style.transition = "opacity 0.3s ease, transform 0.3s ease";
         });
 
         // Refresh Masonry layout
-        imagesLoaded(gallery, () => {
-          msnry.layout();
+        imagesLoaded(gallery, function () {
+          initializeMasonry();
         });
       });
     });
